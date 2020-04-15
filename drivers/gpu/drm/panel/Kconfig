@@ -306,5 +306,14 @@ config DRM_PANEL_SOMC_JDI_SYN_H455TAX01
 	  per pixel.
 	  It provides a single MIPI DSI interface to the host.
 
+config DRM_PANEL_BOE_NT35596s_fhd-5p5boe-vdo
+	tristate "boe_nt35596s_fhd_5p5boe_vdo_driver"
+	depends on OF
+	depends on DRM_MIPI_DSI
+	help
+	  Say Y here if you want to enable support for BOE NT35596S FHD DSI
+	  Video Mode panel
+
+
 
 endmenu
