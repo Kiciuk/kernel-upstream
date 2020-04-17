@@ -31,6 +31,10 @@
 		compatible = "boe,boe_nt35596s_fhd_5p5boe_vdo";
 		reg = <0>;
 		status = "okay";
+		dvdd-supply=  //vddio
+		avdd-supply=  //lab
+		avee-supply= //ibb ->downstream uses it
+		
 		disp-te-gpio = <&msm_gpio 24 0>;
 
 		pinctrl-names = "default";
