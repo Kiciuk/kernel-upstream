@@ -94,10 +94,7 @@
 	status = "ok";
 };
 
-/* MicroSD card slot */
-&sdhc_2 {
-	status = "ok";
-};
+
 
 
 &msm_gpio {
