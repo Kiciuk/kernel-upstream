@@ -9,13 +9,11 @@
 #include <linux/gpio/consumer.h>
 #include <linux/module.h>
 #include <linux/of.h>
-#include <linux/regulator/consumer.h>
 
 struct boe_nt35596s_fhd_5p5boe_vdo {
 	struct drm_panel panel;
 	struct mipi_dsi_device *dsi;
 	struct backlight_device *backlight;
-	struct regulator_bulk_data supplies[3];
 	struct gpio_desc *reset_gpio;
 
 	bool prepared;
@@ -921,19 +919,12 @@ static int boe_nt35596s_fhd_5p5boe_vdo_prepare(struct drm_panel *panel)
 	if (ctx->prepared)
 		return 0;
 
-	ret = regulator_bulk_enable(ARRAY_SIZE(ctx->supplies), ctx->supplies);
-	if (ret < 0) {
-		dev_err(dev, "Failed to enable regulators: %d\n", ret);
-		return ret;
-	}
-
 	boe_nt35596s_fhd_5p5boe_vdo_reset(ctx);
 
 	ret = boe_nt35596s_fhd_5p5boe_vdo_on(ctx);
 	if (ret < 0) {
 		dev_err(dev, "Failed to initialize panel: %d\n", ret);
 		gpiod_set_value_cansleep(ctx->reset_gpio, 0);
-		regulator_bulk_disable(ARRAY_SIZE(ctx->supplies), ctx->supplies);
 		return ret;
 	}
 
@@ -955,7 +946,6 @@ static int boe_nt35596s_fhd_5p5boe_vdo_unprepare(struct drm_panel *panel)
 		dev_err(dev, "Failed to un-initialize panel: %d\n", ret);
 
 	gpiod_set_value_cansleep(ctx->reset_gpio, 0);
-	regulator_bulk_disable(ARRAY_SIZE(ctx->supplies), ctx->supplies);
 
 	ctx->prepared = false;
 	return 0;
@@ -1105,17 +1095,6 @@ static int boe_nt35596s_fhd_5p5boe_vdo_probe(struct mipi_dsi_device *dsi)
 	ctx = devm_kzalloc(dev, sizeof(*ctx), GFP_KERNEL);
 	if (!ctx)
 		return -ENOMEM;
-
-	ctx->supplies[0].supply = "dvdd";
-	ctx->supplies[1].supply = "avdd";
-	ctx->supplies[2].supply = "avee";
-
-	ret = devm_regulator_bulk_get(dev, ARRAY_SIZE(ctx->supplies),
-				      ctx->supplies);
-	if (ret < 0) {
-		dev_err(dev, "Failed to get regulators: %d\n", ret);
-		return ret;
-	}
 
 	ctx->reset_gpio = devm_gpiod_get(dev, "reset", GPIOD_OUT_LOW);
 	if (IS_ERR(ctx->reset_gpio)) {

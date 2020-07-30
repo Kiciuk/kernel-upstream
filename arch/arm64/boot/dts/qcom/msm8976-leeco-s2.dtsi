@@ -16,6 +16,10 @@
 	qcom,board-id= <0xb 0>;
 	qcom,msm-id = <278 0x10001>;
 	
+
+
+
+
 	reserved-memory {
 	
 	
@@ -50,15 +54,14 @@
 
 / {
 	aliases {
-		uart1 = &blsp1_uart0;
-		serial1 = &blsp1_uart1;
+	
 	};
 
 };
 
 &dsi0 {
-	boe_panel0: boe_nt35596s_fhd_5p5boe_vdo-panel@0 {
-		compatible = "boe,boe_nt35596s_fhd_5p5boe_vdo";
+	panel: panel@0  {
+		compatible = "mdss,boe_nt35596s_fhd_5p5boe_vdo";
 		reg = <0>;
 		status = "okay";
 		disp-te-gpio = <&msm_gpio 24 0>;
