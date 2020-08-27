@@ -319,4 +319,13 @@ config DRM_PANEL_SOMC_LGD_FHD_IPS
 	  per pixel.
 	  It provides a single MIPI DSI interface to the host.
 
+config DRM_PANEL_BOE_NT35596s
+tristate "Leeco Le 2 Boe NT35596s panel"
+	depends on GPIOLIB && OF
+	depends on DRM_MIPI_DSI
+	depends on BACKLIGHT_CLASS_DEVICE
+	help
+	  Say Y here if you want to enable support for the Boe NT35596
+	  1080x1920 video mode panel as found in Leeco Le2 devices.
+
 endmenu
