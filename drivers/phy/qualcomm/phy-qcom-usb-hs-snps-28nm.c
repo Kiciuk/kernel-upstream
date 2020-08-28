@@ -533,6 +533,18 @@ static const struct hsphy_data hsphy_data_msm8956_kugo = {
 	.init_seq_num = ARRAY_SIZE(init_seq_msm8956_kugo),
 };
 
+static const struct hsphy_init_seq init_seq_msm8956_s2[] = {
+	HSPHY_INIT_CFG(0x80, 0x73, 0),
+	HSPHY_INIT_CFG(0x81, 0x0a, 0),
+	HSPHY_INIT_CFG(0x82, 0x3f, 0),
+	HSPHY_INIT_CFG(0x83, 0x33, 0),
+};
+
+static const struct hsphy_data hsphy_data_msm8956_s2 = {
+	.init_seq = init_seq_msm8956_s2,
+	.init_seq_num = ARRAY_SIZE(init_seq_msm8956_s2),
+};
+
 static const struct hsphy_init_seq init_seq_qcs404[] = {
 	HSPHY_INIT_CFG(0xc0, 0x01, 0),
 	HSPHY_INIT_CFG(0xe8, 0x0d, 0),
@@ -557,6 +569,7 @@ static const struct hsphy_data hsphy_data_qcs404 = {
 static const struct of_device_id qcom_snps_hsphy_match[] = {
 	{ .compatible = "qcom,msm8956-suzu-usb-hsphy", .data = &hsphy_data_msm8956_suzu, },
 	{ .compatible = "qcom,msm8956-kugo-usb-hsphy", .data = &hsphy_data_msm8956_kugo, },
+	{ .compatible = "qcom,msm8956-s2-usb-hsphy", .data = &hsphy_data_msm8956_s2, },
 	{ .compatible = "qcom,qcs404-usb-hsphy", .data = &hsphy_data_qcs404, },
 	{ },
 };
