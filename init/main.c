@@ -1158,7 +1158,7 @@ static int __ref kernel_init(void *unused)
 
 static noinline void __init kernel_init_freeable(void)
 {
-	panic("SEND HELP");
+	writel(0, ioremap(0x4ab000, 4));
 	/*
 	 * Wait until kthreadd is all set-up.
 	 */
