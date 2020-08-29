@@ -392,7 +392,7 @@
 
 
 	&usb_hs_phy {
-	compatible = "qcom,msm8956-s2-usb-hsphy"
+	compatible = "qcom,msm8956-s2-usb-hsphy";
 };
 
 	&dsi0 {
@@ -411,7 +411,7 @@
 
 /*we use LABIBB but no driver here lets assume LK brought them and nothing will kill if we add driver lets introduce ibb/lab nodes */
 			reset-gpios = <&msm_gpio 25 GPIO_ACTIVE_HIGH>;
-	ports {
+		ports {
 			#address-cells = <1>;
 			#size-cells = <0>;
 
@@ -421,8 +421,9 @@
 					remote-endpoint = <&dsi0_out>;
 					};
 				};
-		};
+			};
 
+			};
 };
 
 /* Display output through DSI0 */
