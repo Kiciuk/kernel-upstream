@@ -30,10 +30,19 @@
 			status = "ok";
 		};
 
-	/delete-node/splash_region@82000000;
+	/delete-node/ splash_region@83000000;
 	cont_splash_mem: splash_region@82000000 {
 			reg = <0x0 0x82000000 0x0 0x2800000>;
 		};
+
+
+	/delete-node/ ext_region@85b00000;
+	ext_region: ext_region@84a00000 {
+			reg = <0x0 0x84a00000 0x0 0x1e00000>;
+			no-map;
+		};
+
+
 
 
 	};
