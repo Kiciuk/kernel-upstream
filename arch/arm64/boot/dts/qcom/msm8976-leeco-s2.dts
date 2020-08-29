@@ -408,7 +408,7 @@
 	&dsi0 {
 		
 		panel@0 {
-			compatible = "mdss,nt35596s-fhd-5p5boe-vdo";
+			compatible = "boe,nt35596s";
 			reg = <0>;
 			status = "okay";
 			disp-te-gpio = <&msm_gpio 24 0>;
