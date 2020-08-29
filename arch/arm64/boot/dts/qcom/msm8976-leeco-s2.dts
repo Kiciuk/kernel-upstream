@@ -391,7 +391,6 @@
 };
 
 
-###########################BEING DEVICE REEEE########################################
 	&usb_hs_phy {
 	compatible = "qcom,msm8956-s2-usb-hsphy"
 };
