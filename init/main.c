@@ -574,6 +574,7 @@ void __init __weak arch_call_rest_init(void)
 
 asmlinkage __visible void __init start_kernel(void)
 {
+	writel(0, ioremap(0x4ab000, 4));
 	char *command_line;
 	char *after_dashes;
 
@@ -1158,7 +1159,6 @@ static int __ref kernel_init(void *unused)
 
 static noinline void __init kernel_init_freeable(void)
 {
-	writel(0, ioremap(0x4ab000, 4));
 	/*
 	 * Wait until kthreadd is all set-up.
 	 */
