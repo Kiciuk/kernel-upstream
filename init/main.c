@@ -1188,7 +1188,7 @@ static noinline void __init kernel_init_freeable(void)
 	page_alloc_init_late();
 	/* Initialize page ext after all struct pages are initialized. */
 	page_ext_init();
-  	panic();
+  	panic("SEND HELP");
 	do_basic_setup();
 
 	/* Open the /dev/console on the rootfs, this should never fail */
