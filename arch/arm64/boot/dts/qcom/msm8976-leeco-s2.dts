@@ -55,7 +55,7 @@
 		interrupts = <65 IRQ_TYPE_EDGE_FALLING>;
 
 		
-		vdd-supply = <&pm8950_l17>; /l17 fix it
+		vdd-supply = <&pm8950_l17>;
 
 		syna,reset-delay-ms = <220>;
 		syna,startup-delay-ms = <220>;
