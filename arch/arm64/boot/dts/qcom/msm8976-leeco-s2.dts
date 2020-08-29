@@ -2,6 +2,7 @@
 
 /dts-v1/;
 #include <dt-bindings/interrupt-controller/irq.h>
+#include <dt-bindings/gpio/gpio.h>
 #include "msm8956.dtsi"
 #include "pmi8950.dtsi"
 #include "pm8950.dtsi"
