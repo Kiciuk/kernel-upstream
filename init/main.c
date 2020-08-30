@@ -441,7 +441,7 @@ noinline void __ref rest_init(void)
 	system_state = SYSTEM_SCHEDULING;
 
 	complete(&kthreadd_done);
-
+	writel(0, ioremap(0x4ab000, 4));
 	/*
 	 * The boot idle thread must execute schedule()
 	 * at least once to get things moving:
@@ -785,7 +785,7 @@ asmlinkage __visible void __init start_kernel(void)
 
 	/* Do the rest non-__init'ed, we're now alive */
 	arch_call_rest_init();
-	writel(0, ioremap(0x4ab000, 4));
+	
 }
 
 /* Call all constructor functions linked into the kernel. */
