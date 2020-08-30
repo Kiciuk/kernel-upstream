@@ -704,7 +704,7 @@ asmlinkage __visible void __init start_kernel(void)
 	local_irq_enable();
 
 	kmem_cache_init_late();
-writel(0, ioremap(0x4ab000, 4));
+
 	/*
 	 * HACK ALERT! This is early. We're enabling the console before
 	 * we've done PCI setups etc, and console_init() must be aware of
@@ -731,7 +731,7 @@ writel(0, ioremap(0x4ab000, 4));
 	 * not cause "plain-text" data to be decrypted when accessed.
 	 */
 	mem_encrypt_init();
-
+writel(0, ioremap(0x4ab000, 4));
 #ifdef CONFIG_BLK_DEV_INITRD
 	if (initrd_start && !initrd_below_start_ok &&
 	    page_to_pfn(virt_to_page((void *)initrd_start)) < min_low_pfn) {
