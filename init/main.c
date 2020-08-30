@@ -764,7 +764,6 @@ asmlinkage __visible void __init start_kernel(void)
 	buffer_init();
 	key_init();
 	security_init();
-	writel(0, ioremap(0x4ab000, 4));
 	dbg_late_init();
 	vfs_caches_init();
 	pagecache_init();
@@ -776,7 +775,7 @@ asmlinkage __visible void __init start_kernel(void)
 	cgroup_init();
 	taskstats_init_early();
 	delayacct_init();
-
+writel(0, ioremap(0x4ab000, 4));
 	poking_init();
 	check_bugs();
 
