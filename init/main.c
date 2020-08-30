@@ -574,7 +574,7 @@ void __init __weak arch_call_rest_init(void)
 
 asmlinkage __visible void __init start_kernel(void)
 {
-	writel(0, ioremap(0x4ab000, 4));
+	
 	char *command_line;
 	char *after_dashes;
 
@@ -626,7 +626,7 @@ asmlinkage __visible void __init start_kernel(void)
 	sort_main_extable();
 	trap_init();
 	mm_init();
-
+	writel(0, ioremap(0x4ab000, 4));
 	ftrace_init();
 
 	/* trace_printk can be enabled here */
