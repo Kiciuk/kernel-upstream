@@ -626,7 +626,7 @@ asmlinkage __visible void __init start_kernel(void)
 	sort_main_extable();
 	trap_init();
 	mm_init();
-	writel(0, ioremap(0x4ab000, 4));
+	
 	ftrace_init();
 
 	/* trace_printk can be enabled here */
@@ -704,7 +704,7 @@ asmlinkage __visible void __init start_kernel(void)
 	local_irq_enable();
 
 	kmem_cache_init_late();
-
+writel(0, ioremap(0x4ab000, 4));
 	/*
 	 * HACK ALERT! This is early. We're enabling the console before
 	 * we've done PCI setups etc, and console_init() must be aware of
