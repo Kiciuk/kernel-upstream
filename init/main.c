@@ -731,7 +731,7 @@ asmlinkage __visible void __init start_kernel(void)
 	 * not cause "plain-text" data to be decrypted when accessed.
 	 */
 	mem_encrypt_init();
-writel(0, ioremap(0x4ab000, 4));
+
 #ifdef CONFIG_BLK_DEV_INITRD
 	if (initrd_start && !initrd_below_start_ok &&
 	    page_to_pfn(virt_to_page((void *)initrd_start)) < min_low_pfn) {
@@ -784,6 +784,7 @@ writel(0, ioremap(0x4ab000, 4));
 
 	/* Do the rest non-__init'ed, we're now alive */
 	arch_call_rest_init();
+	writel(0, ioremap(0x4ab000, 4));
 }
 
 /* Call all constructor functions linked into the kernel. */
