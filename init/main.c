@@ -775,14 +775,14 @@ asmlinkage __visible void __init start_kernel(void)
 	cgroup_init();
 	taskstats_init_early();
 	delayacct_init();
-writel(0, ioremap(0x4ab000, 4));
+
 	poking_init();
 	check_bugs();
 
 	acpi_subsystem_init();
 	arch_post_acpi_subsys_init();
 	sfi_init_late();
-
+writel(0, ioremap(0x4ab000, 4));
 	/* Do the rest non-__init'ed, we're now alive */
 	arch_call_rest_init();
 	
