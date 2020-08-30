@@ -3,6 +3,7 @@
 /dts-v1/;
 #include <dt-bindings/interrupt-controller/irq.h>
 #include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/leds/common.h>
 #include "msm8956.dtsi"
 #include "pmi8950.dtsi"
 #include "pm8950.dtsi"
@@ -81,6 +82,37 @@
 		};
 	};
 };
+/*
+&blsp_i2c8 {
+         status = "okay";
+            led-controller@45 {
+            compatible = "awinic,aw2013";
+            reg = <0x45>;
+            #address-cells = <1>;
+            #size-cells = <0>;
+            vcc-supply = <&pm8950_l10>;
+            led@0 {
+                reg = <0>;
+                led-max-microamp = <5000>;
+                function = LED_FUNCTION_INDICATOR;
+                color = <LED_COLOR_ID_RED>;
+            };
+            led@1 {
+                reg = <1>;
+                led-max-microamp = <5000>;
+                function = LED_FUNCTION_INDICATOR;
+                color = <LED_COLOR_ID_GREEN>;
+            };
+            led@2 {
+                reg = <2>;
+                led-max-microamp = <5000>;
+                function = LED_FUNCTION_INDICATOR;
+                color = <LED_COLOR_ID_BLUE>;
+           	   };
+     	  	};
+	
+	  };
+	*/   
 
 &msm_gpio {
 	gpio-reserved-ranges = <0 4>;
