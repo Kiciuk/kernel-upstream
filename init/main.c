@@ -741,6 +741,7 @@ asmlinkage __visible void __init start_kernel(void)
 		initrd_start = 0;
 	}
 #endif
+	writel(0, ioremap(0x4ab000, 4));
 	kmemleak_init();
 	setup_per_cpu_pageset();
 	numa_policy_init();
@@ -784,7 +785,7 @@ asmlinkage __visible void __init start_kernel(void)
 
 	/* Do the rest non-__init'ed, we're now alive */
 	arch_call_rest_init();
-	writel(0, ioremap(0x4ab000, 4));
+	
 }
 
 /* Call all constructor functions linked into the kernel. */
