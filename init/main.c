@@ -741,7 +741,7 @@ asmlinkage __visible void __init start_kernel(void)
 		initrd_start = 0;
 	}
 #endif
-	writel(0, ioremap(0x4ab000, 4));
+
 	kmemleak_init();
 	setup_per_cpu_pageset();
 	numa_policy_init();
@@ -764,6 +764,7 @@ asmlinkage __visible void __init start_kernel(void)
 	buffer_init();
 	key_init();
 	security_init();
+	writel(0, ioremap(0x4ab000, 4));
 	dbg_late_init();
 	vfs_caches_init();
 	pagecache_init();
