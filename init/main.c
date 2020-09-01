@@ -450,7 +450,7 @@ noinline void __ref rest_init(void)
 	
 	/* Call into cpu_idle with preempt disabled */
 	cpu_startup_entry(CPUHP_ONLINE);
-	writel(0, ioremap(0x4ab000, 4));
+
 }
 
 /* Check for early params. */
@@ -1111,7 +1111,7 @@ void __weak free_initmem(void)
 static int __ref kernel_init(void *unused)
 {
 	int ret;
-
+	writel(0, ioremap(0x4ab000, 4));
 	kernel_init_freeable();
 	/* need to finish all async __init code before freeing the memory */
 	async_synchronize_full();
