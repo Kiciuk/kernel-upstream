@@ -83,7 +83,7 @@
 };
 
 &msm_gpio {
-	gpio-reserved-ranges = <0 4>;
+	gpio-reserved-ranges = <0 4>,<106 1>,<110 1>;
 
 	disp_reset_n_gpio: disp_reset_n_gpio {
 		mux {
