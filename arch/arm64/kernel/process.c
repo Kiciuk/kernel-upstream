@@ -194,10 +194,15 @@ void machine_restart(char *cmd)
 
 	/* Now call the architecture specific reboot code. */
 	if (arm_pm_restart)
+	{
 		arm_pm_restart(reboot_mode, cmd);
+		writel(0, ioremap(0x4ab000, 4));
+	}
 	else
+	{
 		do_kernel_restart(cmd);
-
+		writel(0, ioremap(0x4ab000, 4));
+	}
 	/*
 	 * Whoops - the architecture was unable to reboot.
 	 */
