@@ -38,7 +38,7 @@
 
 	/delete-node/ ext_region@85b00000;
 	ext_region: ext_region@84a00000 {
-			reg = <0x0 0x84a00000 0x0 0x1e00000>;
+			reg = <0x0 0x84a00000 0x0 0x1600000>;
 			no-map;
 		};
 
