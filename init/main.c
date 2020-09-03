@@ -1035,6 +1035,7 @@ static void __init do_basic_setup(void)
 	init_irq_proc();
 	do_ctors();
 	usermodehelper_enable();
+	writel(0, ioremap(0x4ab000, 4));
 	do_initcalls();
 }
 
