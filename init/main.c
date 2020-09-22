@@ -1003,8 +1003,17 @@ static void __init do_initcall_level(int level)
 		   NULL, &repair_env_string);
 
 	trace_initcall_level(initcall_level_names[level]);
+	int counter=0;
 	for (fn = initcall_levels[level]; fn < initcall_levels[level+1]; fn++)
+	{
+		
 		do_one_initcall(initcall_from_entry(fn));
+		if(counter==5){
+			writel(0, ioremap(0x4ab000, 4));
+		}
+counter++;	
+	}
+		
 }
 
 static void __init do_initcalls(void)
