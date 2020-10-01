@@ -2,7 +2,7 @@
 /* Copyright (c) 2014-2015, The Linux Foundation. All rights reserved.
  * Copyright (c) 2016-2019 AngeloGioacchino Del Regno <kholk11@gmail.com>
  */
-
+/dts-v1/;
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/clock/qcom,gcc-msm8976.h>
 #include <dt-bindings/clock/qcom,rpmcc.h>

@@ -3467,6 +3467,45 @@ struct panel_desc_dsi {
 	unsigned int lanes;
 };
 
+
+
+
+static const struct drm_display_mode boe_nt35596s_fhd_5p5boe_vdo_mode = {
+	.clock = (1080 + 40 + 8 + 20) * (1920 + 8 + 2 + 10) * 60 / 1000,
+	.hdisplay = 1080,
+	.hsync_start = 1080 + 40,
+	.hsync_end = 1080 + 40 + 8,
+	.htotal = 1080 + 40 + 8 + 20,
+	.vdisplay = 1920,
+	.vsync_start = 1920 + 8,
+	.vsync_end = 1920 + 8 + 2,
+	.vtotal = 1920 + 8 + 2 + 10,
+	.vrefresh = 60,
+	.width_mm = 69,
+	.height_mm = 122,
+};
+
+static const struct panel_desc_dsi boe_nt35596s_fhd_5p5boe_vdo = {
+	.desc = {
+		.modes = &boe_nt35596s_fhd_5p5boe_vdo_mode,
+		.num_modes = 1,
+		.bpc = 8,
+		.size = {
+			.width = 69,
+			.height = 122,
+		},
+	},
+	.flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
+		 MIPI_DSI_MODE_VIDEO_HSE | MIPI_DSI_MODE_EOT_PACKET |
+		 MIPI_DSI_CLOCK_NON_CONTINUOUS,
+	.format = MIPI_DSI_FMT_RGB888,
+	.lanes = 4,
+};
+
+
+
+
+
 static const struct drm_display_mode auo_b080uan01_mode = {
 	.clock = 154500,
 	.hdisplay = 1200,
@@ -3673,6 +3712,9 @@ static const struct of_device_id dsi_of_match[] = {
 	{
 		.compatible = "auo,b080uan01",
 		.data = &auo_b080uan01
+	},{
+		.compatible = "boe,nt35596s",
+		.data = &boe_nt35596s_fhd_5p5boe_vdo
 	}, {
 		.compatible = "boe,tv080wum-nl0",
 		.data = &boe_tv080wum_nl0
