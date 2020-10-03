@@ -29,7 +29,7 @@
 			status = "ok";
 		};
 
-	/delete-node/splash_region@82000000;
+	/delete-node/splash_region@83000000;
 	cont_splash_mem: splash_region@82000000 {
 			reg = <0x0 0x82000000 0x0 0x2800000>;
 		};
@@ -73,7 +73,7 @@
 };
 
 &msm_gpio {
-	gpio-reserved-ranges = <0 4>;
+	gpio-reserved-ranges = <0 4>, <8 4>;
 
 	disp_reset_n_gpio: disp_reset_n_gpio {
 		mux {
@@ -265,6 +265,7 @@
 		regulator-min-microvolt = <1800000>;
 		regulator-max-microvolt = <1800000>;
 		qcom,init-voltage = <1800000>;
+		regulator-always-on;
 		status = "okay";
 	};
 
@@ -391,9 +392,9 @@
 };
 
 
-###########################BEING DEVICE REEEE########################################
+
 	&usb_hs_phy {
-	compatible = "qcom,msm8956-s2-usb-hsphy"
+	compatible = "qcom,msm8956-s2-usb-hsphy";
 };
 
 	&dsi0 {
@@ -403,15 +404,11 @@
 			reg = <0>;
 			status = "okay";
 			disp-te-gpio = <&msm_gpio 24 0>;
-			vddio-supply = <&pm8950_l6>; /* 1.8V - its already called in dsi_ctrl i should remove*/
-			
+
 			pinctrl-names = "default";
 			pinctrl-0 = <&mdss_te_active &disp_reset_n_gpio
 			     &tp_reset_n_gpio &tp_int_n_gpio>;
-
-
-/*we use LABIBB but no driver here lets assume LK brought them and nothing will kill if we add driver lets introduce ibb/lab nodes */
-			reset-gpios = <&msm_gpio 25 GPIO_ACTIVE_HIGH>;
+			reset-gpios = <&msm_gpio 25 0>;
 	ports {
 			#address-cells = <1>;
 			#size-cells = <0>;
@@ -425,9 +422,8 @@
 		};
 
 };
-
-/* Display output through DSI0 */
-&dsi0_out {
+};
+&dsi0_out{
 	remote-endpoint = <&panel_in>;
 	data-lanes = <0 1 2 3>;
 };
