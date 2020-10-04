@@ -22,12 +22,13 @@ model = "Leeco Le S2";
 	qcom,board-id = <11 0>;
 
 	reserved-memory {
-		ramoops {
-			compatible = "ramoops";
-			reg = <0 0x9ff00000 0 0x00100000>;
-			record-size = <0x20000>;
-			console-size = <0x40000>;
-			ftrace-size = <0x20000>;
+	ramoops {
+			compatible = "removed-dma-pool", "ramoops";
+			no-map;
+			reg = <0 0x9ff00000 0 0x100000>;
+			record-size = <0x10000>;
+			console-size = <0x60000>;
+			ftrace-size = <0x10000>;
 			pmsg-size = <0x20000>;
 			ecc-size = <16>;
 			status = "ok";
@@ -72,6 +73,28 @@ model = "Leeco Le S2";
 
 	};
 };
+
+&blsp_dma {
+	status = "ok";
+};
+
+&blsp2_dma {
+	status = "ok";
+};
+
+&blsp1_uart1 {
+// thats our uart :)
+	status = "disabled";
+};
+
+&blsp1_uart2 {
+	status = "disabled";
+};
+
+&blsp2_uart2 {
+	status = "disabled";
+};
+
 
 /* eMMC */
 &sdhc_1 {
