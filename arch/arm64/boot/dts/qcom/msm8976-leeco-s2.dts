@@ -119,8 +119,8 @@ model = "Leeco Le S2";
 };
 
 &tlmm {
-	gpio-reserved-ranges = <0 4>;
-//add goodix spi pins or we crash
+	gpio-reserved-ranges = <0 4>, <8 4>;
+
 
 	mdp_vsync_p_gpio: mdp_sync_p_gpio {
 		pins = "gpio24";
@@ -206,93 +206,7 @@ model = "Leeco Le S2";
 			bias-pull-down;
 		};
 	};
-//get rid of sdc2 or sdc3 we are not even using these!
-	sdc2_on: sdc2-on {
-		clk {
-			pins = "sdc2_clk";
-			bias-disable;
-			drive-strength = <16>;
-		};
 
-		cmd {
-			pins = "sdc2_cmd";
-			bias-pull-up;
-			drive-strength = <10>;
-		};
-
-		data {
-			pins = "sdc2_data";
-			bias-pull-up;
-			drive-strength = <10>;
-		};
-	};
-
-	sdc2_off: sdc2-off {
-		clk {
-			pins = "sdc2_clk";
-			bias-disable;
-			drive-strength = <2>;
-		};
-
-		cmd {
-			pins = "sdc2_cmd";
-			bias-pull-up;
-			drive-strength = <2>;
-		};
-
-		data {
-			pins = "sdc2_data";
-			bias-pull-up;
-			drive-strength = <2>;
-		};
-	};
-
-
-	sdc3_on: sdc3-on {
-		clk {
-			pins = "gpio44";
-			function = "sdc3";
-			bias-disable;
-			drive-strength = <10>;
-		};
-
-		cmd {
-			pins = "gpio43";
-			function = "sdc3";
-			bias-pull-up;
-			drive-strength = <10>;
-		};
-
-		data {
-			pins = "gpio39", "gpio40", "gpio41", "gpio42";
-			function = "sdc3";
-			bias-pull-up;
-			drive-strength = <10>;
-		};
-	};
-
-	sdc3_off: sdc3-off {
-		clk {
-			pins = "gpio44";
-			function = "sdc3";
-			bias-disable;
-			drive-strength = <2>;
-		};
-
-		cmd {
-			pins = "gpio43";
-			function = "sdc3";
-			bias-pull-up;
-			drive-strength = <2>;
-		};
-
-		data {
-			pins = "gpio39", "gpio40", "gpio41", "gpio42";
-			function = "sdc3";
-			bias-pull-up;
-			drive-strength = <2>;
-		};
-	};
 };
 
 &pm8004_lsid5 {
